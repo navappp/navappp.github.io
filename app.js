@@ -25,7 +25,7 @@ navigator.geolocation.watchPosition((position) => {
             angle = deltaLon > 0 ? 90 : 270;
         }
 
-        document.getElementById('direction').innerText = 'Direction: ${direction}';
+        document.getElementById('direction').innerText = 'Direction: ' + direction;
         drawCompass(angle);
     }
 
