@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compass PWA</title>
-    <link rel="manifest" href="manifest.json">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        canvas {
-            border: 1px solid #000;
-        }
-        #direction {
-            margin-top: 20px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, minimum-scale=1, initial-scale=1, minimal-ui, viewport-fit=cover">
+    <title>PWA Example</title>
+    <!--- You can replace the styles.css file with your own styles --->
+    <!--- You may also change aspects of the manifest.json file, but it is needed for the PWA to work --->
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css">
+
+    <!--- Declare the icons for the webpage --->
+    <link rel="icon" href="icons/masked.png" />
+    <link rel="apple-touch-icon" href="icons/full.png">
+    <link rel="mask-icon" href="icons/masked.png" color="#000000">
 </head>
+
 <body>
-    <h1>Compass PWA</h1>
-    <canvas id="compass" width="300" height="300"></canvas>
-    <div id="direction">Getting direction...</div>
-    <script src="app.js"></script>
+
+    <!--- The body of your html can go here --->
+    <h2>The indecator below shows if you are online of offline.</h2>
+    <h2>Go offline and try to reload the page, it should still load perfectly fine!</h2>
+
+    <div class="container">
+        <h1>Online/Offline Status</h1>
+        <p id="status">Checking status...</p>
+    </div>
+
+    <!--- I place the script tags here so that they load after the html --->
+    <!--- The first tag you need for the PWA to work, you can put your own code into the script.js file though --->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+    <script src="script.js" defer></script>
+
 </body>
+
 </html>
